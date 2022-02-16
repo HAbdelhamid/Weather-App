@@ -9,16 +9,61 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-image: url(https://source.unsplash.com/1600x900/?nature,water);
+    font-size: 125%;
 }
 
-/* App styling */
+/* Card styling */
 
 .card {
-    background: white;
+    background: #000000d0;
     border-radius: 2em;
     padding: 30px;
     margin: 1em;
     width: 100%;
     max-width: 450px;
+    color: white;
+}
 
+/* Search section */
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.search-bar {
+    background: #7c7c7c2b;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 0.4em 1em;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 105%;
+    width: calc(100% - 100px);
+}
+/* Text */
+
+h1.temp {
+    margin: 0;
+}
+
+/* Buttons */
+
+button:hover {
+    background: #7c7c7c6b;
+}
+
+button {
+    background: #7c7c7c2b;
+    margin: 0.5em;
+    border: none;
+    border-radius: 50%;
+    height: 44px;
+    width:44px ;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
