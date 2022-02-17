@@ -22,3 +22,7 @@ body {
     max-width: 450px;
 
 }
+
+.description {
+    text-transform: capitalize;
+}
