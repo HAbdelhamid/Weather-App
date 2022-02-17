@@ -10,7 +10,6 @@ let weather = {
         const { description, icon } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
-        console.log(name , description, icon, temp, humidity, speed )
         $("h2").text("Weather in " + name);
         $(".temp").text(temp + " °C");
         $(".icon").attr("src", `https://openweathermap.org/img/wn/${icon}.png`);
@@ -36,5 +35,34 @@ $(".search-bar").keyup(function (event) {
     }
 })
 
-weather.fetchWeather("denver");
+const findMyCity = async (position) => {
+    const laltitude = position.coords.laltitude;
+    const longitude = position.coords.longitude;
+    const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${laltitude}&longitude=${longitude}&localityLanguage=en`
+   
+    const response = await fetch(geoApiUrl);
+    const data = await response.json();
+    return data.city;
     
+}
+
+var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+};
+  
+async function success(pos) {
+    var crd = pos.coords;
+    let city = await findMyCity(pos);
+    weather.fetchWeather(city);
+
+}
+
+function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+
